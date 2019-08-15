@@ -1,0 +1,12 @@
+
+Banco de dados:
+http://mysql-nodejs.mauricioschmitz.com.br:9191/
+Login: nodejs
+Senha: sevensys
+
+Github projeto:
+https://github.com/schmitz-mauricio/sevensys-nodejs/tree/master/src/services/test
+
+Dontpad:
+http://dontpad.com/nodejs-sevensys
+
