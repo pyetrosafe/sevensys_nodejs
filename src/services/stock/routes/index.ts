@@ -1,34 +1,34 @@
-import {Request, Response, NextFunction} from "express";
-import {TestController} from '../controllers/TestController';
+import { NextFunction, Request, Response } from "express";
+import {StockController} from '../controllers/StockController';
 
-export class testRoutes {
+export class stockRoutes {
 
-    public path: String = '/test';
+    public path: String = '/stock';
 
-    public testController: TestController = new TestController();
+    public stockController: StockController = new StockController();
 
     public routes(app): void {
 
         app.route(`${this.path}/:id`)
             .get(async (req: Request, res: Response, next: NextFunction) => {
                 next();
-            }, this.testController.show.bind(this.testController))
+            }, this.stockController.show.bind(this.stockController))
 
             .put(async (req: Request, res: Response, next: NextFunction) => {
                 next();
-            }, this.testController.edit.bind(this.testController))
+            }, this.stockController.edit.bind(this.stockController))
 
             .delete(async (req: Request, res: Response, next: NextFunction) => {
                 next();
-            }, this.testController.delete.bind(this.testController));
+            }, this.stockController.delete.bind(this.stockController));
 
         app.route(this.path)
             .get(async (req: Request, res: Response, next: NextFunction) => {
                 next();
-            }, this.testController.index.bind(this.testController))
+            }, this.stockController.index.bind(this.stockController))
 
             .post(async (req: Request, res: Response, next: NextFunction) => {
                 next();
-            }, this.testController.save.bind(this.testController));
+            }, this.stockController.save.bind(this.stockController));
     }
 }

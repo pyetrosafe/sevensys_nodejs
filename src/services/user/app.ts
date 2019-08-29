@@ -1,4 +1,3 @@
-// src/services/test/app.ts
 import AppClass from "../../app.class";
 import {userRoutes} from "./routes";
 

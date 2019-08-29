@@ -40,6 +40,18 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "STOCK-API",
+      "preLaunchTask": "typescript",
+      "program": "${workspaceFolder}/dist/stock/index.js",
+      "cwd": "${workspaceFolder}",
+      "protocol": "inspector",
+      "outFiles": [
+          "${workspaceFolder}/dist/**/*.js"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "GATEWAY-API",
       "preLaunchTask": "typescript",
       "program": "${workspaceFolder}/dist/gateway/index.js",

@@ -1,4 +1,3 @@
-// src/services/products/controllers/CategoryController.ts
 import {Request, Response} from 'express';
 import {Category} from '../models/Category';
 

@@ -1,14 +1,18 @@
-// src/services/test/routes/index.ts
 import {Request, Response, NextFunction} from "express";
 import {UserController} from '../controllers/UserController';
 
 export class userRoutes{
 
-    public path: String = '/test';
+    public path: String = '/user';
 
     public userController: UserController = new UserController();
 
     public routes(app): void {
+        app.route(`${this.path}/login`)
+            .post(async (req: Request, res: Response, next: NextFunction) => {
+                next();
+            }, this.userController.login.bind(this.userController))
+
 
         app.route(`${this.path}/:id`)
             .get(async (req: Request, res: Response, next: NextFunction) => {
@@ -32,9 +36,5 @@ export class userRoutes{
                 next();
             }, this.userController.save.bind(this.userController));
 
-        app.route(`${this.path}/login`)
-            .post(async (req: Request, res: Response, next: NextFunction) => {
-                next();
-            }, this.userController.show.bind(this.userController))
     }
 }

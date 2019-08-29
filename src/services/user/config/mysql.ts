@@ -1,4 +1,3 @@
-// src/services/test/config/mysql.ts
 import { Sequelize } from 'sequelize-typescript';
 import { mysqlDefaults } from '../../../config/mysql';
 

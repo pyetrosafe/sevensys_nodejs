@@ -1,4 +1,3 @@
-// src/services/test/index.ts
 import Server from "../../server.class";
 import * as dotenv from "dotenv";
 import { sequelize } from "./config/mysql";

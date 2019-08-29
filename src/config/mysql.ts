@@ -1,4 +1,3 @@
-// src/config/mysql.ts
 export const mysqlDefaults: any = {
   database: 'pyetro',
   user: 'nodejs',

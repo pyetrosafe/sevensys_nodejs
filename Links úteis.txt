@@ -10,3 +10,9 @@ https://github.com/schmitz-mauricio/sevensys-nodejs/tree/master/src/services/tes
 Dontpad:
 http://dontpad.com/nodejs-sevensys
 
+### COMANDOS PARA RODAR ###
+    sequelize migration:generate  --name alter_product_table
+    sequelize db:migrate
+    db:migrate:undo
+    db:migrate:undo:all
+###

@@ -1,72 +1,10 @@
-// src/services/User/controllers/TestController.ts
 import {Request, Response} from 'express';
 import {User} from '../models/User';
+import {userRoutes} from '../routes';
 import * as bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
 
 export class UserController {
-
-  public async index(req: Request, res: Response) {
-    try {
-      const list = await User.findAndCountAll();
-
-      return res.json(list);
-
-    } catch (e) {
-      return res.status(400).json({message: e.message});
-    }
-  }
-
-  public async show(req: Request, res: Response) {
-      try {
-        const user = await User.findByPk(req.params.id);
-        if (user == null) {
-          // throw new Error('User não encontrado');
-          return res.status(404).json({message: 'User não encontrado'});
-        }
-        return res.status(200).json(user);
-    } catch (e) {
-      return res.status(400).json({message: e.message});
-    }
-  }
-
-  public async save(req: Request, res: Response) {
-      try {
-        const user = await User.create(req.body);
-        return res.status(201).json(user);
-    } catch (e) {
-      return res.status(400).json({message: e.message});
-    }
-  }
-
-  public async edit(req: Request, res: Response) {
-      try {
-        const user = await User.findByPk(req.params.id);
-        if (user == null) {
-          // throw new Error('User não encontrado');
-          return res.status(404).json({message: 'User não encontrado'});
-        }
-        const result = await user.update(req.body);
-        return res.status(200).json(result);
-    } catch (e) {
-      return res.status(400).json({message: e.message});
-    }
-  }
-
-  public async delete(req: Request, res: Response) {
-      try {
-        const user = await User.findByPk(req.params.id);
-        if (user == null) {
-          return res.status(404).json({message: 'User não encontrado'});
-        }
-        const result = await User.destroy({
-          where: { id : req.params.id }
-        });
-        return res.status(200).json({message: result == 1 ? 'Registro "'+req.params.id+'" removido com sucesso!' : 'Ocorreu um erro ao remover o registro!'});
-    } catch (e) {
-      return res.status(400).json({message: e.message});
-    }
-  }
 
   public async login(req: Request, res: Response){
     try {
@@ -91,5 +29,65 @@ export class UserController {
     } catch(e){
         return res.status(400).json({message: "Ops... Ocorreu um erro!", error: e.message});
     }
-}
+  }
+
+  public async index(req: Request, res: Response) {
+    try {
+      const list = await User.findAndCountAll();
+
+      return res.json(list);
+
+    } catch (e) {
+      return res.status(400).json({message: e.message});
+    }
+  }
+
+  public async show(req: Request, res: Response) {
+      try {
+        const user = await User.findByPk(req.params.id);
+        if (user == null) {
+          return res.status(404).json({message: 'User não encontrado'});
+        }
+        return res.status(200).json(user);
+    } catch (e) {
+      return res.status(400).json({message: e.message});
+    }
+  }
+
+  public async save(req: Request, res: Response) {
+      try {
+        const user = await User.create(req.body);
+        return res.status(201).json(user);
+    } catch (e) {
+      return res.status(400).json({message: e.message});
+    }
+  }
+
+  public async edit(req: Request, res: Response) {
+      try {
+        const user = await User.findByPk(req.params.id);
+        if (user == null) {
+          return res.status(404).json({message: 'User não encontrado'});
+        }
+        const result = await user.update(req.body);
+        return res.status(200).json(result);
+    } catch (e) {
+      return res.status(400).json({message: e.message});
+    }
+  }
+
+  public async delete(req: Request, res: Response) {
+      try {
+        const user = await User.findByPk(req.params.id);
+        if (user == null) {
+          return res.status(404).json({message: 'User não encontrado'});
+        }
+        const result = await User.destroy({
+          where: { id : req.params.id }
+        });
+        return res.status(200).json({message: result == 1 ? 'Registro "'+req.params.id+'" removido com sucesso!' : 'Ocorreu um erro ao remover o registro!'});
+    } catch (e) {
+      return res.status(400).json({message: e.message});
+    }
+  }
 }

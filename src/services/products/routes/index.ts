@@ -1,4 +1,3 @@
-// src/services/products/routes/index.ts
 import {Request, Response, NextFunction} from "express";
 import {CategoryController} from '../controllers/CategoryController';
 import {ProductController} from '../controllers/ProductController';

@@ -1,4 +1,3 @@
-// src/app.class.ts
 import * as express from "express";
 import * as RateLimit from "express-rate-limit";
 import * as bodyParser from "body-parser";
@@ -24,12 +23,12 @@ class AppClass {
 			max: 20000, // Max number of connections during windowMs milliseconds before sending a 429 response
 			delayMs: 0,
 			// Error message sent to user when max is exceeded.
-			message: "Limite de request para o IP, pora favor tente novamente mais tarde."
+			message: 'Limite de request para o IP, por favor tente novamente mais tarde.'
 		});
 		this.app.use(`${this.routes.path}/`, apiLimiter);
 
-		this.app.use(bodyParser.json({ limit: "1000mb", type: "application/json" }));
-		this.app.use(bodyParser.raw({ limit: "1000mb", type: "application/json" }));
+		this.app.use(bodyParser.json({ limit: '1000mb', type: 'application/json' }));
+		this.app.use(bodyParser.raw({ limit: '1000mb', type: 'application/json' }));
         this.app.use(bodyParser.urlencoded({ extended: false }));
         
         // gzip comprjson2xlsession
@@ -40,7 +39,7 @@ class AppClass {
 
         this.app.route(`${this.routes.path}/teste`)
             .get((req: Request, res: Response, next: NextFunction) => {
-                res.json({ message: "Chegou" });
+                res.json({ message: 'Chegou' });
             });
 
         // enable CORS - Cross Origin Resource Sharing
@@ -52,7 +51,7 @@ class AppClass {
         // Load Routes
         this.routes.routes(this.app);
         // Add error formating 
-        this.app.use(function (err, req, res, next) {
+        this.app.use(function(err, req, res, next) {
             res.status(400).json(err);
         });
 	}

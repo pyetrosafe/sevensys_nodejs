@@ -1,4 +1,3 @@
-// src/services/products/controllers/ProductController.ts
 import {Request, Response} from 'express';
 import {Product} from '../models/Product';
 
